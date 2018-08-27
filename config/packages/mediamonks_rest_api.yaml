@@ -1,0 +1,5 @@
+mediamonks_rest_api:
+    request_matcher:
+        whitelist: [~^/api/$~,  ~^/api~]
+        blacklist: [~^/api/doc~]
+    serializer: jms

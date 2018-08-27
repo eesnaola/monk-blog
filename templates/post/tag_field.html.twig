@@ -1,0 +1,9 @@
+{% extends '@SonataAdmin/CRUD/base_show_field.html.twig' %}
+
+{% block field %}
+    {% for field in value %}
+        {% spaceless %}
+            {{ field }}
+        {% endspaceless %}
+    {% endfor %}
+{% endblock %}

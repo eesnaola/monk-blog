@@ -1,0 +1,25 @@
+sonata_admin:
+    title: 'Sonata Admin'
+    dashboard:
+        groups:
+            post:
+                roles:        [ROLE_USER]
+                on_top:       true
+                icon:         <i class="fa fa-file"></i>
+                label:        Post
+                items:
+                    - route:        admin_app_post_list
+                      label:        Post
+            tag:
+                roles:        [ROLE_USER]
+                on_top:       true
+                icon:         <i class="fa fa-tags"></i>
+                label:        Tag
+                items:
+                    - route:        admin_app_tag_list
+                      label:        Tag
+
+sonata_block:
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]

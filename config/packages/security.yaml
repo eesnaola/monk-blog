@@ -1,0 +1,35 @@
+security:
+    encoders:
+      FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_USER:       ROLE_SONATA_ADMIN
+
+    providers:
+        fos_userbundle:
+           id: fos_user.user_provider.username
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    #providers:
+    #    in_memory: { memory: ~ }
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        secured_area:
+            logout:
+                path: /logout
+                target: /
+            anonymous: ~
+            oauth:
+                resource_owners:
+                    google:        /login/check-google
+                login_path:        /login
+                use_forward:       false
+                failure_path:      /login
+
+                oauth_user_provider:
+                    service: my.oauth_aware.user_provider.service
+
+    access_control:
+    - { path: ^/admin, roles: ROLE_USER }
+    - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
